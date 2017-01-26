@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xmlns:context="http://www.springframework.org/schema/context"
+		xsi:schemaLocation="http://www.springframework.org/schema/beans
+	    http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+	    http://www.springframework.org/schema/context
+	    http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+		
+		<context:annotation-config/>
+		
+		<bean class="com.example.Owner" id="owner">
+			<constructor-arg index = "0" value = "Alejandro Lisarde"/>
+			<constructor-arg index = "1" value = "Yatova"/>
+			<constructor-arg index = "2" ref = "bookShop"/>
+			
+		</bean>
+		
+		<bean class="com.example.Book" id="book" >
+			<constructor-arg index = "1" value = "J.K. Rowling"/>
+			<constructor-arg index = "0" value = "Harry Potter y las reliquias de la muerte"/>
+		</bean>
+		
+		<bean class="com.example.BookShop" id="bookShop" >
+			<constructor-arg index = "0" value = "Jandro's BookShop"/>
+			<constructor-arg index = "1" value = "Valencia"/>
+			<property name="listOfBooks">
+				<list> 
+					<ref bean ="book"/>  
+				</list>
+			</property>
+		</bean>
+</beans>
