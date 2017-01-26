@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd" 
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+		xmlns="http://www.springframework.org/schema/beans">
+
+		<bean class="com.example.Account" id="account"/>
+		<bean class="com.example.Customer" id="customer">
+			<constructor-arg ref="account"/>
+			
+<!--no lo cierra en la linea del Bean porque le añade el constructor, esto se usa para definir el bean-->
+		</bean>
+</beans>

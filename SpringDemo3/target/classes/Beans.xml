@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xmlns:context="http://www.springframework.org/schema/context"
+		xsi:schemaLocation="http://www.springframework.org/schema/beans
+	    http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+	    http://www.springframework.org/schema/context
+	    http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+		
+		<context:annotation-config/>
+		
+		<!-- lo de arriba es lo necesario para poder añadir anotadores --> 
+		
+		
+		<bean class="com.example.Student" id="student"  scope="prototype"
+			init-method="initBean" destroy-method="destroyBean">
+			<constructor-arg index = "0" value = "Alejandro"/>
+				<!--el index, es la posicion del constructor -->
+				<!-- otra forma de hacerlo es diciendole el nombre del String:
+						<constructor-arg name = "name" value = "Alejandro"/>-->
+			<constructor-arg index = "1" value = "26"/>
+				<!--el index, es la posicion del constructor -->
+				<!-- otra forma de hacerlo es diciendole el nombre del String:
+						<constructor-arg name = "age" value = 26/>-->
+			<!-- <constructor-arg ref="training"/> -->
+			<!-- <property name="adress" ref="adress"/>  La ponemos en comentario porque esta Autowired -->
+			<!-- La diferencia entre "trainning" y "adress" es que el "training" es un constructor y la "adress"
+			la he metido con un Setter, entonces hay que añadirle el nombre-->
+			<property name="city" value="Yatova"/>	<!--como Yatova es un objeto hay que añadirsela como value= -->
+			<property name="subjects">
+				<list> 
+					<value>Matemáticas</value>  
+					<value>Física</value>
+				</list>
+			</property>
+			<property name="marks">
+				<map>
+				<entry key="Matemáticas" value="9.6" />
+				<entry key="Física" value="5.05" />
+				</map>
+			</property>
+			
+		</bean>
+		
+		<bean class="com.example.Training" id="training" >
+			<constructor-arg index = "1" value = "Panneer"/>
+			<constructor-arg index = "0" value = "Java"/>
+		</bean>
+		
+		<bean class="com.example.Adress" id="adress" >
+			<constructor-arg index = "1" value = "España"/>
+			<constructor-arg index = "0" value = "Valencia"/>
+		</bean>
+		
+		<bean class="com.example.PostProcessor" />
+</beans>
